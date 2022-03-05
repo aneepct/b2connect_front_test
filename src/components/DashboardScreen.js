@@ -8,6 +8,7 @@ import {
 	getCurrentIp,
 	getWeather,
 	getPopulations,
+  setSearchIp,
 } from "../actions/dashboardActions";
 
 import Weather from "./dashboard/Weather";
@@ -38,13 +39,14 @@ class DashboardScreen extends Component {
   getCurrentIp = async () => {
     await this.props.getCurrentIp();
     if (this.props.dashboard.currentIP !== '') {
-      this.refreshIp();
+      this.refreshIp(this.props.dashboard.currentIP);
     }
   }
 
-	refreshIp = async () => {
-		await this.props.getIpInfo(this.props.dashboard.currentIP);
-		await this.props.getWeather(this.props.dashboard.currentIP);
+	refreshIp = async (newIP) => {
+    await this.props.setSearchIp(newIP);
+		await this.props.getIpInfo(newIP);
+		await this.props.getWeather(newIP);
 	};
 
 	render() {
@@ -116,6 +118,7 @@ DashboardScreen.propTypes = {
 	getIpInfo: PropTypes.func.isRequired,
 	getCurrentIp: PropTypes.func.isRequired,
 	getWeather: PropTypes.func.isRequired,
+  setSearchIp: PropTypes.func.isRequired,
 };
 
 const mapStateToProp = (state) => ({
@@ -127,4 +130,5 @@ export default connect(mapStateToProp, {
 	getCurrentIp,
 	getWeather,
 	getPopulations,
+  setSearchIp,
 })(DashboardScreen);

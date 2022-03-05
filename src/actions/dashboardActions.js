@@ -10,6 +10,16 @@ import {
 } from "./types";
 
 /**
+ * Set Search IP
+ */
+ export const setSearchIp = (searchIp) => (dispatch) => {
+	dispatch({
+    type: GET_IP,
+    payload: searchIp,
+  });
+};
+
+/**
  * Get current IP
  */
 export const getCurrentIp = () => (dispatch) => {

@@ -1,5 +1,5 @@
-import { Card, CardContent, Grid, Typography } from '@mui/material';
-import React from 'react';
+import { Card, CardContent, Grid, TextField, Typography } from '@mui/material';
+import React, { useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -8,7 +8,14 @@ import TableRow from '@mui/material/TableRow';
 import IconButton from '@mui/material/IconButton';
 import RefreshIcon from '@mui/icons-material/Refresh';
 
+
 function IpInfo(props) {
+  const [searchIP, setSearchIP] = useState(props.currentIP);
+
+  const handleChange = () => (event) => {
+    setSearchIP(event.target.value);
+  };
+
   return (
     Object.keys(props.ipInfo).length === 0 ? <Card>
       <CardContent>
@@ -24,7 +31,14 @@ function IpInfo(props) {
             </Typography>
           </Grid>
           <Grid item>
-            <IconButton aria-label="delete" size="large" onClick={() => props.refreshIp()}>
+            <TextField 
+              id="standard-basic"
+              label="Enter IP Address"
+              variant="standard"
+              value={searchIP}
+              onChange={handleChange('searchIP')}
+            />
+            <IconButton aria-label="delete" size="large" onClick={() => props.refreshIp(searchIP)}>
               <RefreshIcon fontSize="inherit" />
             </IconButton> 
           </Grid>
@@ -44,7 +58,14 @@ function IpInfo(props) {
             </Typography>
           </Grid>
           <Grid item>
-            <IconButton aria-label="delete" size="large" onClick={() => props.refreshIp()}>
+            <TextField 
+              id="standard-basic"
+              label="Enter IP Address"
+              variant="standard"
+              value={searchIP}
+              onChange={handleChange('searchIP')}
+            />
+            <IconButton aria-label="delete" size="large" onClick={() => props.refreshIp(searchIP)}>
               <RefreshIcon fontSize="inherit" />
             </IconButton> 
           </Grid>
