@@ -44,7 +44,7 @@ function IpInfo(props) {
           </Grid>
         </Grid>
       </CardContent>
-    </Card> :<Card>
+    </Card> : <Card>
       <CardContent>
         <Grid 
           container 

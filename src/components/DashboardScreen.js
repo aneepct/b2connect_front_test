@@ -101,10 +101,10 @@ class DashboardScreen extends Component {
 							/>
 						</Grid>
 						<Grid item xs={12}>
-							<CryptoRates />
+							<CryptoRates {...this.props.dashboard} />
 						</Grid>
 						<Grid item xs={12}>
-							<CurrencyRates />
+							<CurrencyRates {...this.props.dashboard} />
 						</Grid>
 					</Grid>
 				</Container>
